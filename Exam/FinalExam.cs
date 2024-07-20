@@ -9,17 +9,23 @@ namespace Exam
 {
     class FinalExam : ExamBase
     {
+        #region Properties
         public Answer[] UserAnswers { get; set; }
+        #endregion
 
+        #region Constructors
         public FinalExam(TimeOnly examTime, int numberOfQuestions) : base(examTime, numberOfQuestions)
         {
             UserAnswers = new Answer[NumberOfQuestions];
         }
+        #endregion
+
+        #region Methods
         public override void ShowExam()
         {
             Stopwatch sw = Stopwatch.StartNew();
             sw.Start();
-            for (int i = 0; i < Questions.Length; i++) 
+            for (int i = 0; i < Questions.Length; i++)
             {
                 Questions[i].PrintQuestionWithAnswers();
                 Console.WriteLine("-------------------------------------------");
@@ -39,7 +45,7 @@ namespace Exam
         private void ShowExamWithUserAnswers()
         {
             Console.WriteLine("Your Answers: ");
-            for (int i = 0;i < UserAnswers.Length;i++)
+            for (int i = 0; i < UserAnswers.Length; i++)
             {
                 Console.WriteLine($"Q{i + 1})  {Questions[i].Body}: {UserAnswers[i].AnswerText}");
             }
@@ -47,7 +53,7 @@ namespace Exam
         private double CalcUserGrades()
         {
             double UserGrades = 0;
-            for (int i = 0; i < NumberOfQuestions; i++) 
+            for (int i = 0; i < NumberOfQuestions; i++)
             {
                 if (UserAnswers[i].AnswerId == Questions[i].CorrectAnswer.AnswerId)
                     UserGrades += Questions[i].Mark;
@@ -63,7 +69,8 @@ namespace Exam
                 ExamGrades += Questions[i].Mark;
             }
             return ExamGrades;
-        }
+        } 
+        #endregion
 
     }
 }

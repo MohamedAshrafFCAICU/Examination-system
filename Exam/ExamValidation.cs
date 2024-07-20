@@ -11,6 +11,7 @@ namespace Exam
 
     static class ExamValidation
     {
+        #region Helper Methods [Container For Defensive/ Protective Code]
         public static int ReturnValidAnswerLabel(int NumberOfChoices)
         {
             int ValidAnswerId;
@@ -55,9 +56,9 @@ namespace Exam
             do
             {
                 Console.Write("Please, Enter The Number Of Questions You Wanted To Create: ");
-            } while (!int.TryParse(Console.ReadLine() ,out NumberOfQuestions) || NumberOfQuestions <= 0);
-            
-            return NumberOfQuestions;   
+            } while (!int.TryParse(Console.ReadLine(), out NumberOfQuestions) || NumberOfQuestions <= 0);
+
+            return NumberOfQuestions;
         }
 
         public static QuestionTypes ReturnValidQuestionTypeForFinalExams(int QuestionOrder)
@@ -67,8 +68,8 @@ namespace Exam
             {
                 Console.Write($"Please , Choose The Type Of Question Number ({QuestionOrder}) (1 For True OR False || 2 For MCQ):  ");
 
-            } while (!int.TryParse(Console.ReadLine() , out ValidQuestionType) || (ValidQuestionType != 1 && ValidQuestionType != 2));
-            
+            } while (!int.TryParse(Console.ReadLine(), out ValidQuestionType) || (ValidQuestionType != 1 && ValidQuestionType != 2));
+
             return (QuestionTypes)ValidQuestionType;
         }
 
@@ -81,7 +82,7 @@ namespace Exam
                 Console.Write("Please , Enter The Body Of Question: ");
                 ValidBody = Console.ReadLine()!;
 
-            } while (int.TryParse(ValidBody , out FakeNum));
+            } while (int.TryParse(ValidBody, out FakeNum));
             return ValidBody;
         }
 
@@ -92,14 +93,14 @@ namespace Exam
             {
                 Console.Write("Please , Enter The Marks Of The Question: ");
 
-            } while (!double.TryParse(Console.ReadLine() , out ValidMark) || ValidMark < 0 );
+            } while (!double.TryParse(Console.ReadLine(), out ValidMark) || ValidMark < 0);
 
             return ValidMark;
         }
 
         public static int ReturnValidCorrectAnswerIdForTFQ(int NumberOfChoices)
         {
-  
+
             int AnswerId;
             do
             {
@@ -108,7 +109,7 @@ namespace Exam
             } while (!int.TryParse(Console.ReadLine(), out AnswerId) || AnswerId <= 0 || AnswerId > NumberOfChoices);
 
             return AnswerId;
-           
+
         }
         public static int ReturnValidCorrectAnswerId(int NumberOfChoices)
         {
@@ -125,12 +126,12 @@ namespace Exam
         }
         public static int ReturnValidChoicesNumber(out int ValidChoicesNumber)
         {
-            
+
             do
             {
                 Console.Write("Please , Enter The Number Of Choices You Want in This Question: ");
 
-            } while (!int.TryParse(Console.ReadLine() , out ValidChoicesNumber) || ValidChoicesNumber <= 1);
+            } while (!int.TryParse(Console.ReadLine(), out ValidChoicesNumber) || ValidChoicesNumber <= 1);
 
             return ValidChoicesNumber;
         }
@@ -142,7 +143,7 @@ namespace Exam
             {
                 Console.Write("Please , Enter The Subject Id: ");
 
-            } while (!int.TryParse(Console.ReadLine() , out ValidSubjectId) || ValidSubjectId <= 0);
+            } while (!int.TryParse(Console.ReadLine(), out ValidSubjectId) || ValidSubjectId <= 0);
 
             return ValidSubjectId;
         }
@@ -167,10 +168,11 @@ namespace Exam
             {
                 Console.Write("Do You Want To Start The Exam (Y | N): ");
 
-            } while (!char.TryParse(Console.ReadLine() , out Choice) || (Choice != 'Y' && Choice != 'y' && Choice != 'N' && Choice != 'n') );
+            } while (!char.TryParse(Console.ReadLine(), out Choice) || (Choice != 'Y' && Choice != 'y' && Choice != 'N' && Choice != 'n'));
 
             return Choice;
-        }
+        } 
+        #endregion
 
     }
 }

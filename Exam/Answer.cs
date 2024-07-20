@@ -8,8 +8,10 @@ namespace Exam
 {
     class Answer
     {
+        #region Properties
         public int AnswerId { get; set; }
 
-        public string? AnswerText { get; set; }
+        public string? AnswerText { get; set; } 
+        #endregion
     }
 }

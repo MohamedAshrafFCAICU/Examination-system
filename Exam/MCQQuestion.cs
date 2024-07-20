@@ -9,6 +9,7 @@ namespace Exam
 {
     class MCQQuestion : QuestionBase
     {
+        #region Constructors
         public MCQQuestion(QuestionTypes questionHeader, string body, double mark, int choicesNumber, int correctAnswerId) : base(questionHeader, body, mark, choicesNumber, correctAnswerId)
         {
             for (int i = 0; i < ChoicesNumber; i++)
@@ -19,11 +20,13 @@ namespace Exam
             }
             CorrectAnswer.AnswerText = Answers[CorrectAnswer.AnswerId - 1].AnswerText;
         }
+        #endregion
 
+        #region Methods
         public override void PrintQuestionWithAnswers()
         {
             Console.WriteLine($"Choose One Answer Question \t\t\tMark({Mark})\n{Body}");
-            for (int i = 0;i < ChoicesNumber;i++) 
+            for (int i = 0; i < ChoicesNumber; i++)
             {
                 Console.Write($"{Answers[i].AnswerId}. {Answers[i].AnswerText}\t\t");
             }
@@ -34,6 +37,7 @@ namespace Exam
         {
             Console.Write($"Please , Enter The Choice Number {AnswerOrder + 1}: ");
             Answers[AnswerOrder].AnswerText = Console.ReadLine();
-        }
+        } 
+        #endregion
     }
 }

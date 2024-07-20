@@ -8,13 +8,16 @@ namespace Exam
 {
     class PracticalExam : ExamBase
     {
+        #region Constructors
         public PracticalExam(TimeOnly examTime, int numberOfQuestions) : base(examTime, numberOfQuestions)
         {
         }
+        #endregion
 
+        #region Methods
         public override void ShowExam()
         {
-            for (int i = 0; i < NumberOfQuestions; i++) 
+            for (int i = 0; i < NumberOfQuestions; i++)
             {
                 Questions[i].PrintQuestionWithAnswers();
                 Console.WriteLine("--------------------------------------");
@@ -28,10 +31,11 @@ namespace Exam
 
         private void ShowExamWithRightAnswers()
         {
-            for(int i = 0;i < NumberOfQuestions; i++) 
+            for (int i = 0; i < NumberOfQuestions; i++)
             {
                 Console.WriteLine($"Q{i + 1})  {Questions[i].Body}: {Questions[i].CorrectAnswer.AnswerText}");
             }
-        }
+        } 
+        #endregion
     }
 }

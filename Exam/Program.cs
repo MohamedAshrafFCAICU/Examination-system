@@ -6,18 +6,22 @@ namespace Exam
     {
         static void Main()
         {
+            #region Exam Creation 
             Subject Sub = new Subject(ExamValidation.ReturnValidSubjectId(), ExamValidation.ReturnValidSubjectName());
             Sub.CreateExam();
             Console.Clear();
-            
+            #endregion
+
+            #region Exam Start
             char Choice = ExamValidation.StartExam();
-            if(Choice == 'Y' || Choice == 'y')
+            if (Choice == 'Y' || Choice == 'y')
             {
-                Console.Clear() ;              
+                Console.Clear();
                 Sub.SubjectExam.ShowExam();
-               
-            }
-           
+
+            } 
+            #endregion
+
         }
     }
 }

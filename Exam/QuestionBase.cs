@@ -9,8 +9,9 @@ namespace Exam
 {
     abstract class QuestionBase
     {
-       
 
+
+        #region Properties
         public QuestionTypes QuestionHeader { get; set; }
 
         public string Body { get; set; }
@@ -22,9 +23,10 @@ namespace Exam
         public Answer[] Answers { get; set; }
 
         public Answer CorrectAnswer { get; set; }
+        #endregion
 
-
-        public QuestionBase(QuestionTypes questionHeader, string body, double mark, int choicesNumber,  int correctAnswerId)
+        #region Constructors
+        public QuestionBase(QuestionTypes questionHeader, string body, double mark, int choicesNumber, int correctAnswerId)
         {
             QuestionHeader = questionHeader;
             Body = body;
@@ -35,6 +37,10 @@ namespace Exam
             CorrectAnswer.AnswerId = correctAnswerId;
         }
 
-        public abstract void PrintQuestionWithAnswers();
+        #endregion
+
+        #region Methods
+        public abstract void PrintQuestionWithAnswers(); 
+        #endregion
     }
 }

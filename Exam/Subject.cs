@@ -13,8 +13,9 @@ namespace Exam
     }
     class Subject
     {
-       
 
+
+        #region Properties  
         public int SubjectId { get; set; }
 
         public string SubjectName { get; set; }
@@ -23,22 +24,27 @@ namespace Exam
 
         public ExamType ExamType { get; set; }
 
-        public Subject(int subjectId, string subjectName )
+        #endregion
+
+        #region Constructors
+        public Subject(int subjectId, string subjectName)
         {
             SubjectId = subjectId;
-            SubjectName = subjectName;         
- 
-        }
+            SubjectName = subjectName;
 
+        }
+        #endregion
+
+        #region Methods
         public void CreateExam()
         {
             ExamType = ExamValidation.ReturnValidExamType();
 
             if (ExamType == ExamType.Practical)
-                SubjectExam = new PracticalExam(ExamValidation.ReturnValidExamTime() , ExamValidation.ReturnNumberOfQuestions());
+                SubjectExam = new PracticalExam(ExamValidation.ReturnValidExamTime(), ExamValidation.ReturnNumberOfQuestions());
             else
                 SubjectExam = new FinalExam(ExamValidation.ReturnValidExamTime(), ExamValidation.ReturnNumberOfQuestions());
-         
+
             Console.Clear();
             EnterExamQuestions();
 
@@ -46,7 +52,7 @@ namespace Exam
 
         private void EnterExamQuestions()
         {
-            for (int i = 0; i < SubjectExam.NumberOfQuestions ; i++)
+            for (int i = 0; i < SubjectExam.NumberOfQuestions; i++)
             {
                 if (ExamType == ExamType.Final)
                 {
@@ -65,7 +71,8 @@ namespace Exam
                 }
                 Console.Clear();
             }
-          
-        }
+
+        } 
+        #endregion
     }
 }
